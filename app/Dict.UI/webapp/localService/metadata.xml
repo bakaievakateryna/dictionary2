@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="DictService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="StudentService" EntityType="DictService.StudentService">
+                    <NavigationPropertyBinding Path="class" Target="ClassService"/>
+                </EntitySet>
+                <EntitySet Name="ClassService" EntityType="DictService.ClassService">
+                    <NavigationPropertyBinding Path="student" Target="StudentService"/>
+                    <NavigationPropertyBinding Path="card" Target="CardsService"/>
+                </EntitySet>
+                <EntitySet Name="CardsService" EntityType="DictService.CardsService">
+                    <NavigationPropertyBinding Path="class" Target="ClassService"/>
+                </EntitySet>
+                <EntitySet Name="TeacherService" EntityType="DictService.TeacherService">
+                    <NavigationPropertyBinding Path="class" Target="ClassService"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="StudentService">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="Surname" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="Birthday" Type="Edm.DateTimeOffset" Nullable="false"/>
+                <NavigationProperty Name="class" Type="DictService.ClassService" Partner="student">
+                    <ReferentialConstraint Property="class_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="class_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="ClassService">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="100"/>
+                <NavigationProperty Name="student" Type="Collection(DictService.StudentService)" Partner="class"/>
+                <NavigationProperty Name="card" Type="Collection(DictService.CardsService)" Partner="class"/>
+            </EntityType>
+            <EntityType Name="CardsService">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Word" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="Translate" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="Example" Type="Edm.String" MaxLength="100"/>
+                <NavigationProperty Name="class" Type="DictService.ClassService" Partner="card">
+                    <ReferentialConstraint Property="class_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="class_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="TeacherService">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="100"/>
+                <NavigationProperty Name="class" Type="DictService.ClassService">
+                    <ReferentialConstraint Property="class_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="class_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <Annotations Target="DictService.StudentService/ID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DictService.ClassService/ID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DictService.CardsService/ID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="DictService.TeacherService/ID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
