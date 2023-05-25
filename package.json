@@ -15,9 +15,9 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-Dict.AdminApp": "cds watch --open Dict.AdminApp/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-Dict.MyApplication": "cds watch --open Dict.MyApplication/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
-    "app/Dict.AdminApp"
+    "app/Dict.MyApplication"
   ]
 }

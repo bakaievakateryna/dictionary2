@@ -1,2 +1,2 @@
 
-using from './Dict.AdminApp/annotations';
+using from './Dict.MyApplication/annotations';

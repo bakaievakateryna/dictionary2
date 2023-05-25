@@ -20,24 +20,25 @@
       ]
     },
     {
-      "name": "Run Dict.AdminApp",
-      "type": "node",
+      "name": "Run Dict-1",
       "request": "launch",
-      "program": "${workspaceFolder}/Dict.AdminApp/node_modules/@sap/html5-repo-mock/index.js",
-      "cwd": "${workspaceFolder}/Dict.AdminApp",
-      "env": {
-        "PORT": "6004",
-        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
-        "run.config": "{\"handlerId\":\"ui5_flat_run_config_handler_id\",\"runnableId\":\"/home/user/projects/Dict/app/Dict.AdminApp\"}"
-      },
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "cds",
       "args": [
-        "--standalone",
-        "/DictAdminApp/index.html",
-        "--ui5",
-        "{\"version\":\".\"}"
+        "serve",
+        "--in-memory?"
       ],
-      "envFile": "${workspaceFolder}/Dict.AdminApp/.env1",
-      "preLaunchTask": "Build Dict.AdminApp"
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "envFile": "${workspaceFolder}/.env1",
+      "env": {
+        "NODE_ENV": "development",
+        "run.config": "{\"handlerId\":\"cap_run_config_handler_id\",\"runnableId\":\"{\\\"projectPath\\\":\\\"/home/user/projects/Dict\\\",\\\"profileName\\\":\\\"development\\\"}\"}"
+      }
     }
   ]
 }

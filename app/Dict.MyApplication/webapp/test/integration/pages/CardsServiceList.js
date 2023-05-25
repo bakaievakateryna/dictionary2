@@ -8,9 +8,9 @@ sap.ui.define(['sap/fe/test/ListReport'], function(ListReport) {
 
     return new ListReport(
         {
-            appId: 'Dict.AdminApp',
-            componentId: 'TeacherServiceList',
-            entitySet: 'TeacherService'
+            appId: 'Dict.MyApplication',
+            componentId: 'CardsServiceList',
+            entitySet: 'CardsService'
         },
         CustomPageDefinitions
     );

@@ -10,18 +10,18 @@ sap.ui.define([
             opaTest("Start application", function (Given, When, Then) {
                 Given.iStartMyApp();
 
-                Then.onTheTeacherServiceList.iSeeThisPage();
+                Then.onTheCardsServiceList.iSeeThisPage();
 
             });
 
 
             opaTest("Navigate to ObjectPage", function (Given, When, Then) {
                 // Note: this test will fail if the ListReport page doesn't show any data
-                When.onTheTeacherServiceList.onFilterBar().iExecuteSearch();
-                Then.onTheTeacherServiceList.onTable().iCheckRows();
+                When.onTheCardsServiceList.onFilterBar().iExecuteSearch();
+                Then.onTheCardsServiceList.onTable().iCheckRows();
 
-                When.onTheTeacherServiceList.onTable().iPressRow(0);
-                Then.onTheTeacherServiceObjectPage.iSeeThisPage();
+                When.onTheCardsServiceList.onTable().iPressRow(0);
+                Then.onTheCardsServiceObjectPage.iSeeThisPage();
 
             });
 

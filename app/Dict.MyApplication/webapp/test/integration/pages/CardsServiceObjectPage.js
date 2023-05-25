@@ -8,9 +8,9 @@ sap.ui.define(['sap/fe/test/ObjectPage'], function(ObjectPage) {
 
     return new ObjectPage(
         {
-            appId: 'Dict.AdminApp',
-            componentId: 'TeacherServiceObjectPage',
-            entitySet: 'TeacherService'
+            appId: 'Dict.MyApplication',
+            componentId: 'CardsServiceObjectPage',
+            entitySet: 'CardsService'
         },
         CustomPageDefinitions
     );
