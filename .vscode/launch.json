@@ -18,6 +18,26 @@
       "skipFiles": [
         "<node_internals>/**"
       ]
+    },
+    {
+      "name": "Run Dict.AdminApp",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/Dict.AdminApp/node_modules/@sap/html5-repo-mock/index.js",
+      "cwd": "${workspaceFolder}/Dict.AdminApp",
+      "env": {
+        "PORT": "6004",
+        "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
+        "run.config": "{\"handlerId\":\"ui5_flat_run_config_handler_id\",\"runnableId\":\"/home/user/projects/Dict/app/Dict.AdminApp\"}"
+      },
+      "args": [
+        "--standalone",
+        "/DictAdminApp/index.html",
+        "--ui5",
+        "{\"version\":\".\"}"
+      ],
+      "envFile": "${workspaceFolder}/Dict.AdminApp/.env1",
+      "preLaunchTask": "Build Dict.AdminApp"
     }
   ]
 }
